@@ -15,8 +15,8 @@ class $modify(LoadingLayer) {
 		if (Mod::get()->getSettingValue<bool>("hideProgressBar"))
 			getChildOfType<CCSprite>(this, 6)->setVisible(false); // hide progress bar
 		if (Mod::get()->getSettingValue<bool>("hideCocosAndFmod")) {
-			getChildOfType<CCSprite>(this, 3)->setVisible(false); //hide cocos
-			getChildOfType<CCSprite>(this, 4)->setVisible(false); //hide fmod
+			getChildOfType<CCSprite>(this, 3)->setVisible(false); // hide cocos
+			getChildOfType<CCSprite>(this, 4)->setVisible(false); // hide fmod
 		}
 		return true;
 	}
