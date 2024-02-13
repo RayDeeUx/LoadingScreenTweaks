@@ -10,13 +10,6 @@
 	"name": "LoadingScreenTweaks",
 	"developer": "RayDeeUx",
 	"description": "Hides various elements of your choice from Geometry Dash's loading screen.",
-	"dependencies": [
-		{
-			"id": "geode.node-ids",
-			"version": ">=1.4.0",
-			"importance": "required"
-		}
-	],
 	"early-load": true,
 	"settings": {
 		"enabled": {
