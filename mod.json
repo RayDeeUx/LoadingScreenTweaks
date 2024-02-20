@@ -9,7 +9,8 @@
 	"id": "raydeeux.loadingscreentweaks",
 	"name": "LoadingScreenTweaks",
 	"developer": "RayDeeUx",
-	"description": "Hides various elements of your choice from Geometry Dash's loading screen.",
+	"description": "Hides various elements of your choice from the loading screen.",
+	"repository": "https://github.com/RayDeeUx/LoadingScreenTweaks",
 	"early-load": true,
 	"settings": {
 		"enabled": {
