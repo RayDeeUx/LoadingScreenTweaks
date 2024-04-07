@@ -73,11 +73,13 @@ class $modify(LoadingLayer) {
 				if (!Mod::get()->getSettingValue<bool>("multiline")) {
 					line->limitLabelWidth(420.f, textArea->getScale(), .25f);
 				} else {
+					#ifdef GEODE_IS_DESKTOP
 					line->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
 					line->setWidth(420.f);
 					float desiredScale = 72.f / theString.length();
 					if (desiredScale > 1.f) desiredScale = 1.f;
 					line->setScale(textArea->getScale() * desiredScale);
+					#endif
 				}
 				this->addChild(line);
 			}
