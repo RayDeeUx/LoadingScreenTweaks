@@ -59,7 +59,8 @@
 			"name": "Multiline Splash Text",
 			"description": "Custom splash texts can either become multiline splash texts (if this is enabled) or be limited to one line (if this is disabled). Here is where you make that decision.",
 			"type": "bool",
-			"default": true
+			"default": true,
+			"platforms": ["windows", "macos"]
 		}
 	},
 	"resources": {
