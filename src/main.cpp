@@ -10,6 +10,17 @@ using namespace geode::prelude;
 std::vector<std::string> quotes;
 
 $on_mod(Loaded) {
+	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
+	
+	auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
+	if (!std::filesystem::exists(path3)) {
+		std::string content = R"(System32
+Decrypting MS Paint...
+lorem ipsum
+each line is a new message for the loading screen)";
+		utils::file::writeString(path3, content);
+	}
+	
 	if (Mod::get()->getSettingValue<bool>("customSplashText") && !Mod::get()->getSettingValue<bool>("hideSplashText")) {
 		auto path = (Mod::get()->getResourcesDir() / "default.txt").string();
 		std::ifstream file(path);
@@ -24,17 +35,6 @@ $on_mod(Loaded) {
 				std::string mySteamWishlist = fmt::format("\"{}\"", stanCele);
 				quotes.push_back(mySteamWishlist);
 			}
-		}
-	
-		// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
-	
-		auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
-		if (!std::filesystem::exists(path3)) {
-			std::string content = R"(RobTop > NinjaMuffin
-Decrypting MS Paint...
-lorem ipsum
-each line is a new message for the loading screen)";
-			utils::file::writeString(path3, content);
 		}
 		
 		if (Mod::get()->getSettingValue<bool>("custom")) {
