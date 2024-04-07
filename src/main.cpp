@@ -63,7 +63,7 @@ class $modify(LoadingLayer) {
 		getChildByID("progress-slider")->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar")); // hide progress bar
 		getChildByID("cocos2d-logo")->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide cocos
 		getChildByID("fmod-logo")->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide fmod
-		if (Mod::get()->getSettingValue<bool>("customSplashText")) { // && !fromReload
+		if (Mod::get()->getSettingValue<bool>("customSplashText") && !fromReload) {
 			if (auto textArea = typeinfo_cast<TextArea*>(getChildByID("text-area"))) {
 				if (!textArea->isVisible()) return true;
 				std::string theString = grabRandomQuote();
