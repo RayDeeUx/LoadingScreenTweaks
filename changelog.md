@@ -1,4 +1,6 @@
 # LoadingScreenTweaks Changelog
+## v1.3.0
+- Port to 2.206.
 ## v1.2.0
 - Allow users to customize the text area on the loading screen, much like DisturbingNewBests and WholesomeEndTexts.
 ## v1.1.0
