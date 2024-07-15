@@ -24,8 +24,8 @@ each line is a new message for the loading screen)";
 	if (Mod::get()->getSettingValue<bool>("customSplashText") && !Mod::get()->getSettingValue<bool>("hideSplashText")) {
 		auto path = (Mod::get()->getResourcesDir() / "default.txt").string();
 		std::ifstream file(path);
-		std::string str;
-		while (std::getline(file, str)) { quotes.push_back(str); }
+		std::string placeHolder;
+		while (std::getline(file, placeHolder)) { quotes.push_back(placeHolder); }
 	
 		if (Mod::get()->getSettingValue<bool>("stanleyCeleste")) {
 			auto pathParableMount = (Mod::get()->getResourcesDir() / "stanleyCeleste.txt").string();
