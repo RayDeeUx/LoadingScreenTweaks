@@ -4,4 +4,4 @@ Hides various elements of your choice from Geometry Dash's loading screen. Also 
 
 Made with help from dank_meme, Cvolton, and SpaghettDev.
 
-This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2. To report bugs or get help with using my mods, press the Discord button at the lower left corner.
+This [Geode mod](https://geode-sdk.org) is licensed under LGPLv2. To report bugs or get help with using my mods, press the Discord button in the lower left corner.
