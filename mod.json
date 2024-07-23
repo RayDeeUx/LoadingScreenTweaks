@@ -33,13 +33,13 @@
 		},
 		"hideSplashText": {
 			"name": "Hide Splash Text",
-			"description": "Hides the golden splash text.",
+			"description": "Hides the loading screen splash text.",
 			"type": "bool",
 			"default": false
 		},
 		"customSplashText": {
 			"name": "Custom Splash Text",
-			"description": "Toggles between custom golden splash text and RobTop's splash text.\n\n(Enabling \"Hide Splash Text\" overrides this.)",
+			"description": "Toggles between custom loading screen splash text and RobTop's splash text.\n\n(Enabling \"Hide Splash Text\" overrides this.)",
 			"type": "bool",
 			"default": false
 		},
@@ -54,6 +54,29 @@
 			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nIncludes quotes from Celeste and The Stanley Parable.",
 			"type": "bool",
 			"default": false
+		},
+		"customFont": {
+			"name": "Splash Text Font #",
+			"description": "Sets the font of all loading screen splash text messages. Default is 0 (falls back to <cl>goldFont</c>, as seen in vanilla Geometry Dash).\n\nNotes:\n- <cj>-1 for Pusab, -2 for chatFont.</c>\n- <cy>Refer to the level editor for the font each number corresponds to.</c>",
+			"type": "int",
+			"default": 0,
+			"min": -2,
+			"max": 59,
+			"control": {
+				"input": true,
+				"slider": true,
+				"arrows": true,
+				"big-arrows": true,
+				"arrow-step": 1,
+				"big-arrow-step": 5,
+				"slider-step": 1
+			}
+		},
+		"customFontGoldColor": {
+			"name": "Gold Color (Non-Golden Pusab Fonts)",
+			"description": "Applies something close to the gold color loading screen splash text messages <cp>only if your setting for \"'New Best' Text Font #\" is not 0</c>.",
+			"type": "bool",
+			"default": true
 		},
 		"multiline": {
 			"name": "Multiline Splash Text",

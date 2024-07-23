@@ -75,8 +75,18 @@ class $modify(LoadingLayer) {
 				if (!textArea->isVisible()) return true;
 				std::string theString = grabRandomQuote();
 				textArea->setVisible(false);
-				auto line = CCLabelBMFont::create(theString.c_str(), "goldFont.fnt");
+				std::string desiredFont = "goldFont.fnt";
+				int64_t fontID = Mod::get()->getSettingValue<int64_t>("customFont");
+				if (fontID == -2) {
+					desiredFont = "chatFont.fnt";
+				} else if (fontID == -1) {
+					desiredFont = "bigFont.fnt";
+				} else if (fontID != 0) {
+					desiredFont = fmt::format("gjFont{}.fnt", fontID);
+				}
+				auto line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
 				line->setPosition({textArea->getPositionX(), textArea->getPositionY()});
+				if (fontID != 0 && Mod::get()->getSettingValue<bool>("customFontGoldColor")) { line->setColor({254, 207, 6}); }
 				#ifdef GEODE_IS_DESKTOP
 				if (!Mod::get()->getSettingValue<bool>("multiline")) {
 					line->limitLabelWidth(420.f, textArea->getScale(), .25f);
@@ -90,6 +100,7 @@ class $modify(LoadingLayer) {
 				#else
 				line->limitLabelWidth(420.f, textArea->getScale(), .25f);
 				#endif
+				line->setID("custom-splash-text"_spr);
 				this->addChild(line);
 			}
 		}
