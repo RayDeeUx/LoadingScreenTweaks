@@ -82,7 +82,7 @@ class $modify(LoadingLayer) {
 				} else if (fontID == -1) {
 					desiredFont = "bigFont.fnt";
 				} else if (fontID != 0) {
-					desiredFont = fmt::format("gjFont{}.fnt", fontID);
+					desiredFont = fmt::format("gjFont{:02d}.fnt", fontID);
 				}
 				auto line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
 				line->setPosition({textArea->getPositionX(), textArea->getPositionY()});
