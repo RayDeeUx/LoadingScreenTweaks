@@ -5,12 +5,13 @@
 		"android": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.4.0",
-	"id": "raydeeux.deathscreentweaks",
-	"name": "DeathScreenTweaks",
-	"developers": ["RayDeeUx", "sofabeddd"],
-	"description": "Various tweaks to the \"New Best\" screen. (Formerly DisturbingNewBests.)",
-	"repository": "https://github.com/RayDeeUx/DeathScreenTweaks",
+	"version": "v1.3.1",
+	"id": "raydeeux.loadingscreentweaks",
+	"name": "LoadingScreenTweaks",
+	"developer": "RayDeeUx",
+	"description": "Hides various elements of your choice from Geometry Dash's loading screen.",
+	"repository": "https://github.com/RayDeeUx/LoadingScreenTweaks",
+	"early-load": true,
 	"settings": {
 		"enabled": {
 			"name": "Enabled",
@@ -18,56 +19,45 @@
 			"type": "bool",
 			"default": true
 		},
-		"checkJustDont": {
-			"name": "Run \"Just Dont\"/\"Do Not...\" Check",
-			"description": "<cp>REQUIRES GAME RESTART TO APPLY.</c>\n\nWhen Geometry Dash opens, automatically check if the \"Just Dont\"/\"Do Not...\" setting is enabled.\n\n<cy>This setting is for the slim minority of users who don't have the \"Just Dont\"/\"Do Not...\" option enabled in GD's settings. This setting is disabled by default and the check only runs once per game session on the main menu.</c>",
+		"hideCocosAndFmod": {
+			"name": "Hide Cocos/FMod Watermarks",
+			"description": "Hides the Cocos Engine and FMod watermarks.",
+			"type": "bool",
+			"default": true
+		},
+		"hideProgressBar": {
+			"name": "Hide Progress Bar",
+			"description": "Hides the loading progress bar.",
 			"type": "bool",
 			"default": false
 		},
-		"changeDeathText": {
-			"name": "Custom \"New Best\" Texts",
-			"description": "Leaving this enabled is semi-important, since it's kind of the original purpose of this mod. You can disable it though if you want, I guess.",
+		"hideSplashText": {
+			"name": "Hide Splash Text",
+			"description": "Hides the loading screen splash text.",
 			"type": "bool",
-			"default": true
+			"default": false
+		},
+		"customSplashText": {
+			"name": "Custom Splash Text",
+			"description": "Toggles between custom loading screen splash text and RobTop's splash text.\n\n(Enabling \"Hide Splash Text\" overrides this.)",
+			"type": "bool",
+			"default": false
 		},
 		"custom": {
-			"name": "Include Custom Messages",
-			"description": "<cp>REQUIRES GAME RESTART TO APPLY.</c>\n\nIncludes your own custom \"New Best\" text.\nPlease edit the \"custom.txt\" file by opening this mod's config directory (look for the golden pencil button at the bottom left of the mod's introductory screen).",
+			"name": "custom.txt Splash Text",
+			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nIncludes your own custom loading screen splash text.\nPlease edit the \"custom.txt\" file by opening this mod's config directory (look for the golden pencil button at the bottom left of the mod's introductory screen).",
 			"type": "bool",
 			"default": false
 		},
-		"brandonRogers": {
-			"name": "Include Brandon Rogers (READ!)",
-			"description": "<cp>REQUIRES GAME RESTART TO APPLY.</c>\n\nIncludes quotes from YouTube comedian Brandon Rogers.\n<cr>WARNING: Brandon Rogers' humor may not be for everyone.</c>\n<cy>By enabling this option, you agree to hold harmless the mod developer (RayDeeUx) or any lead developer of Geode and assume all responsibility for any resulting damages, including damages to your emotions, ego, self-esteem, or moral compass.</c>\n\n<cr>This is your only warning.</c>",
+		"stanleyCeleste": {
+			"name": "Include the Stanley Parable + Celeste",
+			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nIncludes quotes from Celeste and The Stanley Parable.",
 			"type": "bool",
 			"default": false
-		},
-		"hideNewBestMessages": {
-			"name": "Hide \"New Best\" Messages",
-			"description": "Hide death messages on \"New Best\" screens.",
-			"type": "bool",
-			"default": false
-		},
-		"lineWrapping": {
-			"name": "Linewrapping",
-			"description": "Allows linewrapping for all \"New Best\" death messages.\n\nUseful for anyone who wants incredibly long (but still legible) death messages.\n\nDisabling this option will ignore whatever value you have set for the \"'New Best' Text Max Scale\" setting below.",
-			"type": "bool",
-			"default": true
-		},
-		"maxScale": {
-			"name": "\"New Best\" Text Max Scale",
-			"description": "Sets the max scale of all \"New Best\" death messages.\n\n(The \"Linewrapping\" setting above needs to be enabled for this setting to apply.)",
-			"type": "float",
-			"default": 1,
-			"min": 0.10,
-			"max": 1.20,
-			"control": {
-				"slider-step": 0.01
-			}
 		},
 		"customFont": {
-			"name": "\"New Best\" Text Font #",
-			"description": "Sets the font of all \"New Best\" death messages. Default is 0 (falls back to <cl>goldFont</c>, as seen in vanilla Geometry Dash).\n\nNotes:\n- <cj>-1 for Pusab, -2 for chatFont.</c>\n- <cy>To use font numbers greater than 0: refer to the level editor for the font each number corresponds to, subtract that number by 1, and then put it here.</c>",
+			"name": "Splash Text Font #",
+			"description": "Sets the font of all loading screen splash text messages. Default is 0 (falls back to <cl>goldFont</c>, as seen in vanilla Geometry Dash).\n\nNotes:\n- <cj>-1 for Pusab, -2 for chatFont.</c>\n- <cy>To use font numbers greater than 0: refer to the level editor for the font each number corresponds to, subtract that number by 1, and then put it here.</c>",
 			"type": "int",
 			"default": 0,
 			"min": -2,
@@ -84,95 +74,16 @@
 		},
 		"customFontGoldColor": {
 			"name": "Gold Color (Non-Golden Pusab Fonts)",
-			"description": "Applies something close to the gold color for \"New Best\" death messages <cp>only if your setting for \"'New Best' Text Font #\" is not 0</c>.",
+			"description": "Applies something close to the gold color loading screen splash text messages <cp>only if your setting for \"'New Best' Text Font #\" is not 0</c>.",
 			"type": "bool",
 			"default": true
 		},
-		"accuratePercent": {
-			"name": "Accurate Death Percentage",
-			"description": "Adds decimal points to the score on your \"New Best\" screen.",
+		"multiline": {
+			"name": "Multiline Splash Text",
+			"description": "Custom splash texts can either become multiline splash texts (if this is enabled) or be limited to one line (if this is disabled). Here is where you make that decision.",
 			"type": "bool",
-			"default": false
-		},
-		"accuracy": {
-			"name": "Accu. Death % Accuracy",
-			"description": "Choose how many decimal points to add for your percentage on your \"New Best\" screen.",
-			"type": "int",
-			"default": 2,
-			"min": 1,
-			"max": 15,
-			"control": {
-				"input": true,
-				"slider": true,
-				"arrows": true,
-				"big-arrows": true,
-				"arrow-step": 1,
-				"big-arrow-step": 5,
-				"slider-step": 1
-			}
-		},
-		"newBestSFX": {
-			"name": "\"New Best\" SFX",
-			"description": "Play a unique SFX whenever you get a \"New Best\" screen. Only applies to Normal Mode, and ignores your setting for <cl>\"Always New Best\"</c>.\n\n<cy>You will hear vanilla SFX if you enable this setting.</c>\n<cy>To use your own SFX during \"New Best\" screens, go to this mod's config directory and make sure there is an audio file named \"</c><cl>newBest</c><cy>\".</c>\n\n<cl>.mp3</c><cy>, </c><cl>.wav</c><cy>, </c><cl>.ogg</c><cy>, </c><cl>.oga</c><cy>, and</c> <cl>.flac</c> <cy>are supported.</c>",
-			"type": "bool",
-			"default": false
-		},
-		"extension": {
-			"name": "\"New Best\" SFX File Extension",
-			"description": "Choose the SFX file extension for your \"New Best\" SFX. Only applies to Normal Mode.\n<cy>Only file extensions supported by the FMOD audio engine</c> <cy>(</c><cl>https://fmod.com</c><cy>, which Geometry Dash uses) are available for this setting.</c>",
-			"type": "string",
-			"default": "mp3",
-			"one-of": [
-				"mp3",
-				"wav",
-				"flac",
-				"oga",
-				"ogg",
-				"[None, play vanilla SFX]"
-			]
-		},
-		"newBestVolume": {
-			"name": "\"New Best\" SFX Volume",
-			"description": "Set the volume of your \"New Best\" SFX (as a percentage).",
-			"type": "int",
-			"default": 50,
-			"min": 0,
-			"max": 100
-		},
-		"alwaysNewBest": {
-			"name": "Always New Best [Normal Mode]",
-			"description": "Shows a \"New Best\" screen even when you did not die at a new best.\n\n<cy>Shown percentages from enabling this setting will be based on in-game/vanilla calculations</c> <cr>ONLY.</c>\n\n<cr>If you see two \"New Best\" screens when dying in a level, the game is giving you orbs on that level (which you probably hacked). I can't help you with that.</c>",
-			"type": "bool",
-			"default": false
-		},
-		"alwaysNewBestPractice": {
-			"name": "Always New Best [Practice Mode]",
-			"description": "Always show a \"New Best\" when you die in <cg>practice mode</c>.",
-			"type": "bool",
-			"default": false
-		},
-		"alwaysNewBestPlaytest": {
-			"name": "Always New Best [Testmode]",
-			"description": "Always show a \"New Best\" when you die in <cl>testmode</c> (playtesting levels).\n<cl>You really shouldn't enable this. It just looks silly. But the option's here anyway because why not.</c>",
-			"type": "bool",
-			"default": false
-		},
-		"currencyLayer": {
-			"name": "Hide Reward Animations",
-			"description": "Hides the reward animation from \"New Best\" screens in rated levels.",
-			"type": "bool",
-			"default": false
-		},
-		"noVisibleNewBest": {
-			"name": "Hide \"New Best\" Screen",
-			"description": "<cl>Original idea by VolcaroCham.</c>\n\nHides the \"New Best\" screen when getting a new best.\n\nNot sure why anyone would willingly enable this, but now the option exists in this mod. Have fun.",
-			"type": "bool",
-			"default": false
-		},
-		"logging": {
-			"name": "Enable Logging",
-			"type": "bool",
-			"default": false
+			"default": true,
+			"platforms": ["win", "macos"]
 		}
 	},
 	"resources": {
@@ -180,18 +91,6 @@
 			"resources/*.txt"
 		]
 	},
-	"incompatibilities": [
-		{
-			"id": "raydeeux.disturbingnewbests",
-			"version": "*",
-			"importance": "superseded"
-		},
-		{
-			"id": "cham.nonewbest",
-			"version": "*",
-			"importance": "superseded"
-		}
-	],
 	"issues": {
 		"url": "https://discord.com/channels/911701438269386882/1205523212444639292",
 		"info": "To disable hyphen prefixes and suffixes in custom messages, edit saved.json. For other issues, ping me <cl>(@erymanthus)</c> in the Geode SDK Discord server's <cl>#help</c> channel if you need help. <cr>DMs are NOT accepted.</c>"
