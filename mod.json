@@ -49,9 +49,21 @@
 			"type": "bool",
 			"default": false
 		},
+		"customTextsOnly": {
+			"name": "custom.txt Texts Only",
+			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nOnly use quotes from <cl>custom.txt</c>. (Uses the default set of quotes as a fallback if you don't have any custom quotes available.)\n\n<cr>Enabling this setting will override the \"Include The Stanley Parable + Celeste\" and \"Include Futurama\" settings.</c>",
+			"type": "bool",
+			"default": false
+		},
 		"stanleyCeleste": {
-			"name": "Include the Stanley Parable + Celeste",
+			"name": "Include The Stanley Parable + Celeste",
 			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nIncludes quotes from Celeste and The Stanley Parable.",
+			"type": "bool",
+			"default": false
+		},
+		"futurama": {
+			"name": "Include Futurama",
+			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nIncludes splash texts inspired by Futurama's title captions.",
 			"type": "bool",
 			"default": false
 		},

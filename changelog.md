@@ -1,4 +1,7 @@
 # LoadingScreenTweaks Changelog
+## v1.4.0
+- Added "Custom Quotes Only" option, by popular demand. (If no custom quotes are found, the mod will fall back to anything enabled from the default set of quotes.)
+- Added Futurama quotes, because why not. (Disabled by default for your sanity.)
 ## v1.3.1
 - Fix a crash from selecting Fonts 1 through 9 (even though they're all objectively ugly). Thanks again, hiimjustin000!
 ## v1.3.0
