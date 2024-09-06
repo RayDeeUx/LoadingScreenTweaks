@@ -5,7 +5,7 @@
 		"android": "2.206",
 		"win": "2.206"
 	},
-	"version": "v1.3.1",
+	"version": "v1.4.1",
 	"id": "raydeeux.loadingscreentweaks",
 	"name": "LoadingScreenTweaks",
 	"developer": "RayDeeUx",
@@ -56,7 +56,7 @@
 		},
 		"customTextsOnly": {
 			"name": "custom.txt Texts Only",
-			"description": "<cp>[REQUIRES RESTART TO APPLY]</c>\n\nOnly use quotes from <cl>custom.txt</c>. (Uses the default set of quotes as a fallback if you don't have any custom quotes available.)\n\n<cr>Enabling this setting will override the \"Include The Stanley Parable + Celeste\" and \"Include Futurama\" settings.</c>",
+			"description": "<cp>REQUIRES GAME RESTART TO APPLY.</c>\n\nOnly uses your own custom \"New Best\" texts from \"custom.txt\" file.\n\nIf no custom quotes are found, the mod will fall back to the default set of quotes.\n\n<cr>Enabling this setting will override the \"Include The Stanley Parable + Celeste\" and \"Include Futurama\" settings if you have written your own custom quotes.</c>",
 			"type": "bool",
 			"default": false
 		},
