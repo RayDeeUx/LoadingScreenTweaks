@@ -9,6 +9,8 @@ project(LoadingScreenTweaks VERSION 1.0.0)
 # Set up the mod binary
 add_library(${PROJECT_NAME} SHARED
     src/main.cpp
+    src/Settings.cpp
+    src/Settings.hpp
     # Add your cpp files here
 )
 
