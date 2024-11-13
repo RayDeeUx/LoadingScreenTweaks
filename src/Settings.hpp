@@ -66,11 +66,17 @@ public:
 		auto theLabelAsAButton = CCMenuItemSpriteExtra::create(theLabel, this, menu_selector(MyButtonSettingNodeV3::onConfigDirButton));
 
 		theLabelAsAButton->setPositionX(0);
+		theLabelAsAButton->setID("config-dir-shortcut-button"_spr);
 
 		theMenu->addChild(theLabelAsAButton);
 		theMenu->setPosition(width / 2, 20.f);
+		theMenu->setID("config-dir-shortcut-menu"_spr);
 
 		this->addChild(theMenu);
+
+		for (const auto &node : CCArrayExt<CCNode*>(this->getChildren())) {
+			node->setVisible(!node->getID().empty());
+		}
 
 		return true;
 	}
