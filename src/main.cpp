@@ -26,7 +26,7 @@ void addSettingToQuotes(std::string settingName, bool quotationMarks = false) {
 }
 
 $on_mod(Loaded) {
-	Mod::get()->addCustomSetting<MySettingValue>("configdir", "none");
+	Mod::get()->addCustomSetting<MyButtonSettingV3>("configdir", "none");
 	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
 	
 	auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
