@@ -45,10 +45,8 @@ protected:
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
         if (!SettingNodeV3::init(setting, width)) return false;
 		this->setContentSize({ width, 40.f });
-		std::string name = Mod::get()->getSettingDefinition(value->getKey())->get<MyButtonSettingV3>()->json->get<std::string>("name");
-		m_desc = Mod::get()->getSettingDefinition(value->getKey())->get<MyButtonSettingV3>()->json->get<std::string>("desc");
-
-		auto theMenu = CCMenu::create();
+		std::string name = setting->getName();
+		m_desc = setting->getDescription();
 		auto theLabel = CCLabelBMFont::create(name.c_str(), "bigFont.fnt");
 
 		// copied a bit from louis ck jr
