@@ -30,7 +30,15 @@ public:
 class MyButtonSettingNodeV3 : public SettingNodeV3 {
 private:
 	std::string m_desc = "";
-protected:
+  void onCommit();
+  void onResetToDefault();
+public:
+  	bool hasUncommittedChanges() const {
+		return false;
+	}
+  	bool hasNonDefaultValue() const {
+		return false;
+	}
 	void onConfigDirButton(CCObject*) {
 		file::openFolder(Mod::get()->getConfigDir());
 		#ifndef GEODE_IS_MOBILE
