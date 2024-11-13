@@ -15,28 +15,28 @@ public:
 		return root.ok(std::static_pointer_cast<SettingV3>(res));
 	}
 	bool load(matjson::Value const& json) override {
-        return true;
-    }
-    bool save(matjson::Value& json) const override {
-        return true;
-    }
+		return true;
+	}
+	bool save(matjson::Value& json) const override {
+		return true;
+	}
 	bool isDefaultValue() const override {
-        return true;
-    }
-    void reset() override {}
+		return true;
+	}
+	void reset() override {}
 	// SettingNodeV3* create(float width) override; // this line is certified cringe
 };
 
 class MyButtonSettingNodeV3 : public SettingNodeV3 {
 private:
 	std::string m_desc = "";
-  void onCommit();
-  void onResetToDefault();
 public:
-  	bool hasUncommittedChanges() const {
+	void onCommit() {}
+	void onResetToDefault() {}
+	bool hasUncommittedChanges() const {
 		return false;
 	}
-  	bool hasNonDefaultValue() const {
+	bool hasNonDefaultValue() const {
 		return false;
 	}
 	void onConfigDirButton(CCObject*) {
@@ -51,7 +51,7 @@ public:
 		#endif
 	}
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
-        if (!SettingNodeV3::init(setting, width)) return false;
+		if (!SettingNodeV3::init(setting, width)) return false;
 		this->setContentSize({ width, 40.f });
 		std::string name = setting->getName().value();
 		m_desc = setting->getDescription().value();
