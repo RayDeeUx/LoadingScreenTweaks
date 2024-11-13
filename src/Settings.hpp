@@ -65,4 +65,13 @@ protected:
 
 		return true;
 	}
+	static MyButtonSettingNodeV3* create(MyButtonSettingV3* value, float width) {
+		auto ret = new MyButtonSettingNodeV3();
+		if (ret && ret->init(value, width)) {
+			ret->autorelease();
+			return ret;
+		}
+		CC_SAFE_DELETE(ret);
+		return nullptr;
+	}
 };
