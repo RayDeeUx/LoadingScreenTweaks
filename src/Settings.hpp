@@ -24,7 +24,8 @@ public:
 		return true;
 	}
 	void reset() override {}
-	SettingNodeV3* createNode(float width) override; // this line is certified cringe
+	// SettingNodeV3* createNode(float width) override; // this line is [absolutely] certified cringe
+	SettingNodeV3 *createNode(float width) override; // this line is NOT certified cringe
 };
 
 class MyButtonSettingNodeV3 : public SettingNodeV3 {
