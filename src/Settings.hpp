@@ -28,25 +28,10 @@ public:
 };
 
 class MyButtonSettingNodeV3 : public SettingNodeV3 {
-private:
-	std::string m_desc = "";
 protected:
-	void onConfigDirButton(CCObject*) {
-		file::openFolder(Mod::get()->getConfigDir());
-		#ifndef GEODE_IS_MOBILE
-		if (!CCKeyboardDispatcher::get()->getShiftKeyPressed()) return;
-		FLAlertLayer::create(
-			"Config Directory Opened!",
-			m_desc,
-			"Aight"
-		)->show();
-		#endif
-	}
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
         if (!SettingNodeV3::init(setting, width)) return false;
 		this->setContentSize({ width, 40.f });
-		std::string name = Mod::get()->getSettingDefinition(value->getKey())->get<CustomSetting>()->json->get<std::string>("name");
-		m_desc = Mod::get()->getSettingDefinition(value->getKey())->get<CustomSetting>()->json->get<std::string>("desc");
 
 		auto theMenu = CCMenu::create();
 		auto theLabel = CCLabelBMFont::create(name.c_str(), "bigFont.fnt");
