@@ -15,16 +15,16 @@ public:
 		return root.ok(std::static_pointer_cast<SettingV3>(res));
 	}
 	bool load(matjson::Value const& json) override {
-		return true;
-	}
-	bool save(matjson::Value& json) const override {
-		return true;
-	}
+        return true;
+    }
+    bool save(matjson::Value& json) const override {
+        return true;
+    }
 	bool isDefaultValue() const override {
-		return true;
-	}
-	void reset() override {}
-	SettingNodeV3* createNode(float width) override;
+        return true;
+    }
+    void reset() override {}
+	SettingNodeV3* create(float width) override;
 };
 
 class MyButtonSettingNodeV3 : public SettingNodeV3 {
@@ -43,7 +43,7 @@ protected:
 		#endif
 	}
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
-		if (!SettingNodeV3::init(setting, width)) return false;
+        if (!SettingNodeV3::init(setting, width)) return false;
 		this->setContentSize({ width, 40.f });
 		std::string name = setting->getName().value();
 		m_desc = setting->getDescription().value();
@@ -64,5 +64,14 @@ protected:
 		this->addChild(theMenu);
 
 		return true;
+	}
+	MyButtonSettingNodeV3* create(std::shared_ptr<MyButtonSettingV3> setting, float width) {
+		auto ret = new MyButtonSettingNodeV3();
+		if (ret && ret->init(setting, width)) {
+			ret->autorelease();
+			return ret;
+		}
+		CC_SAFE_DELETE(ret);
+		return nullptr;
 	}
 };
