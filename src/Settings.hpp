@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Geode/loader/SettingNode.hpp>
 #include <Geode/loader/SettingV3.hpp>
 
 using namespace geode::prelude;
@@ -46,8 +45,13 @@ protected:
 	bool init(std::shared_ptr<MyButtonSettingV3> setting, float width) {
         if (!SettingNodeV3::init(setting, width)) return false;
 		this->setContentSize({ width, 40.f });
+<<<<<<< HEAD
+		std::string name = Mod::get()->getSettingDefinition(value->getKey())->get<CustomSetting>()->json->get<std::string>("name");
+		m_desc = Mod::get()->getSettingDefinition(value->getKey())->get<CustomSetting>()->json->get<std::string>("desc");
+=======
 		std::string name = Mod::get()->getSettingDefinition(value->getKey())->get<MyButtonSettingV3>()->json->get<std::string>("name");
 		m_desc = Mod::get()->getSettingDefinition(value->getKey())->get<MyButtonSettingV3>()->json->get<std::string>("desc");
+>>>>>>> 8abab1effe7edafa9e4443d246def108aec12ef8
 
 		auto theMenu = CCMenu::create();
 		auto theLabel = CCLabelBMFont::create(name.c_str(), "bigFont.fnt");
