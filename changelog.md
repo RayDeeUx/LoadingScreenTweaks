@@ -1,4 +1,6 @@
 # LoadingScreenTweaks Changelog
+## v1.4.2
+- Port to 2.2074.
 ## v1.4.1
 - Added "Custom Quotes Only" option, by popular demand. (If no custom quotes are found, the mod will fall back to anything enabled from the default set of quotes.)
 - Added Futurama quotes, because why not. (Disabled by default for your sanity.)
