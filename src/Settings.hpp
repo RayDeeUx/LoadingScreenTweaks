@@ -27,7 +27,7 @@ public:
 	// SettingNodeV3* create(float width) override; // this line is certified cringe
 };
 
-class MyButtonSettingNodeV3 : public SettingNodeV3 {
+class MyButtonSettingNodeV3 : public SettingValueNodeV3<MyButtonSettingV3> {
 private:
 	std::string m_desc = "";
 protected:
