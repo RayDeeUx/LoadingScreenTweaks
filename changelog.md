@@ -1,6 +1,6 @@
 # LoadingScreenTweaks Changelog
 ## v1.4.2
-- Port to 2.2074.
+- Port to 2.2074. Shoutout to [B1rtek](https://github.com/b1rtek) and [Fleeym](https://github.com/fleeym) for helping me deal with notoriously clunky SettingsV3 syntax!
 ## v1.4.1
 - Added "Custom Quotes Only" option, by popular demand. (If no custom quotes are found, the mod will fall back to anything enabled from the default set of quotes.)
 - Added Futurama quotes, because why not. (Disabled by default for your sanity.)
