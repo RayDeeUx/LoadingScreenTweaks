@@ -73,7 +73,7 @@ public:
 
 		return true;
 	}
-	MyButtonSettingNodeV3* create(std::shared_ptr<MyButtonSettingV3> setting, float width) {
+	static MyButtonSettingNodeV3* create(std::shared_ptr<MyButtonSettingV3> setting, float width) {
 		auto ret = new MyButtonSettingNodeV3();
 		if (ret && ret->init(setting, width)) {
 			ret->autorelease();
