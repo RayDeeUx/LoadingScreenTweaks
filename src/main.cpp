@@ -77,46 +77,44 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 	bool init(bool fromReload) {
 		if (!LoadingLayer::init(fromReload)) return false;
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
-		getChildByID("text-area")->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText")); // hide loading screen splash text
-		getChildByID("progress-slider")->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar")); // hide progress bar
-		getChildByID("cocos2d-logo")->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide cocos
-		getChildByID("fmod-logo")->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide fmod
-		if (Mod::get()->getSettingValue<bool>("customSplashText") && !fromReload) {
-			if (auto textArea = typeinfo_cast<TextArea*>(getChildByID("text-area"))) {
-				if (!textArea->isVisible()) return true;
-				std::string theString = "";
-				if (!customQuotes.empty() && Mod::get()->getSettingValue<bool>("customTextsOnly")) theString = grabRandomQuote(customQuotes);
-				else theString = grabRandomQuote(quotes);
-				textArea->setVisible(false);
-				std::string desiredFont = "goldFont.fnt";
-				int64_t fontID = Mod::get()->getSettingValue<int64_t>("customFont");
-				if (fontID == -2) {
-					desiredFont = "chatFont.fnt";
-				} else if (fontID == -1) {
-					desiredFont = "bigFont.fnt";
-				} else if (fontID != 0) {
-					desiredFont = fmt::format("gjFont{:02d}.fnt", fontID);
-				}
-				auto line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
-				line->setPosition({textArea->getPositionX(), textArea->getPositionY()});
-				if (fontID != 0 && Mod::get()->getSettingValue<bool>("customFontGoldColor")) { line->setColor({254, 207, 6}); }
-				#ifdef GEODE_IS_DESKTOP
-				if (!Mod::get()->getSettingValue<bool>("multiline")) {
-					line->limitLabelWidth(420.f, textArea->getScale(), .25f);
-				} else {
-					line->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
-					line->setWidth(420.f);
-					float desiredScale = 72.f / theString.length();
-					if (desiredScale > 1.f) desiredScale = 1.f;
-					line->setScale(textArea->getScale() * desiredScale);
-				}
-				#else
-				line->limitLabelWidth(420.f, textArea->getScale(), .25f);
-				#endif
-				line->setID("custom-splash-text"_spr);
-				this->addChild(line);
-			}
+		if (const auto node = getChildByID("text-area")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText")); // hide loading screen splash text
+		if (const auto node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar")); // hide progress bar
+		if (const auto node = getChildByID("cocos2d-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide cocos
+		if (const auto node = getChildByID("fmod-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide fmod
+		if (!Mod::get()->getSettingValue<bool>("customSplashText") || fromReload) return true;
+		auto textArea = typeinfo_cast<TextArea*>(getChildByID("text-area"));
+		if (!textArea || !textArea->isVisible()) return true;
+		std::string theString = "";
+		if (!customQuotes.empty() && Mod::get()->getSettingValue<bool>("customTextsOnly")) theString = grabRandomQuote(customQuotes);
+		else theString = grabRandomQuote(quotes);
+		textArea->setVisible(false);
+		std::string desiredFont = "goldFont.fnt";
+		int64_t fontID = Mod::get()->getSettingValue<int64_t>("customFont");
+		if (fontID == -2) {
+			desiredFont = "chatFont.fnt";
+		} else if (fontID == -1) {
+			desiredFont = "bigFont.fnt";
+		} else if (fontID != 0) {
+			desiredFont = fmt::format("gjFont{:02d}.fnt", fontID);
 		}
+		auto line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
+		line->setPosition({textArea->getPositionX(), textArea->getPositionY()});
+		if (fontID != 0 && Mod::get()->getSettingValue<bool>("customFontGoldColor")) { line->setColor({254, 207, 6}); }
+		#ifdef GEODE_IS_DESKTOP
+		if (!Mod::get()->getSettingValue<bool>("multiline")) {
+			line->limitLabelWidth(420.f, textArea->getScale(), .25f);
+		} else {
+			line->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
+			line->setWidth(420.f);
+			float desiredScale = 72.f / theString.length();
+			if (desiredScale > 1.f) desiredScale = 1.f;
+			line->setScale(textArea->getScale() * desiredScale);
+		}
+		#else
+		line->limitLabelWidth(420.f, textArea->getScale(), .25f);
+		#endif
+		line->setID("custom-splash-text"_spr);
+		this->addChild(line);
 		return true;
 	}
 };

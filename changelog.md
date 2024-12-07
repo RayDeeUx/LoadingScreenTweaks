@@ -1,4 +1,6 @@
 # LoadingScreenTweaks Changelog
+## v1.5.0
+- Add some long-overdue `nullptr` checks.
 ## v1.4.2
 - Port to 2.2074. Shoutout to [B1rtek](https://github.com/b1rtek) and [Fleeym](https://github.com/fleeym) for helping me deal with notoriously clunky SettingsV3 syntax!
 ## v1.4.1
