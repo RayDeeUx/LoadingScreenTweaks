@@ -68,6 +68,7 @@ each line is a new message for the loading screen)";
 }
 
 std::string grabRandomQuote(std::vector<std::string> vector) {
+	if (vector.empty()) return "";
 	std::mt19937 randomSeed(std::random_device{}());
 	std::shuffle(vector.begin(), vector.end(), randomSeed);
 	return vector.front();
