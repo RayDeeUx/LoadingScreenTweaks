@@ -1,4 +1,6 @@
 # LoadingScreenTweaks Changelog
+## v1.5.1
+- Fix a stupid C++ crash for shuffling empty data types.
 ## v1.5.0
 - Add some long-overdue `nullptr` checks.
 ## v1.4.2
