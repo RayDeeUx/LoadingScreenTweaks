@@ -11,22 +11,21 @@ using namespace geode::prelude;
 std::vector<std::string> quotes;
 std::vector<std::string> customQuotes;
 
-void addSettingToQuotes(std::string settingName, bool quotationMarks = false) {
-	if (Mod::get()->getSettingValue<bool>(settingName)) {
-		auto settingAsFileName = fmt::format("{}.txt", settingName);
-		auto filePath = (Mod::get()->getResourcesDir() / settingAsFileName).string();
-		std::ifstream file(filePath);
-		std::string placeholderString;
-		while (std::getline(file, placeholderString)) {
-			std::string forPushingIntoVector = placeholderString;
-			if (quotationMarks) forPushingIntoVector = fmt::format("\"{}\"", placeholderString);
-			quotes.push_back(forPushingIntoVector);
-		}
+void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
+	if (!Mod::get()->getSettingValue<bool>(settingName)) return;
+	auto settingAsFileName = fmt::format("{}.txt", settingName);
+	auto filePath = (Mod::get()->getResourcesDir() / settingAsFileName).string();
+	std::ifstream file(filePath);
+	std::string placeholderString;
+	while (std::getline(file, placeholderString)) {
+		std::string forPushingIntoVector = placeholderString;
+		if (quotationMarks) forPushingIntoVector = fmt::format("\"{}\"", placeholderString);
+		quotes.push_back(forPushingIntoVector);
 	}
 }
 
 $on_mod(Loaded) {
-	Mod::get()->registerCustomSettingType("configdir", &MyButtonSettingV3::parse);
+	(void) Mod::get()->registerCustomSettingType("configdir", &MyButtonSettingV3::parse);
 	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
 	
 	auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
@@ -35,17 +34,18 @@ $on_mod(Loaded) {
 Decrypting MS Paint...
 lorem ipsum
 each line is a new message for the loading screen)";
-		utils::file::writeString(path3, content);
+		(void) utils::file::writeString(path3, content);
 	}
 	
 	if (Mod::get()->getSettingValue<bool>("customSplashText") && !Mod::get()->getSettingValue<bool>("hideSplashText")) {
 		auto path = (Mod::get()->getResourcesDir() / "default.txt").string();
 		std::ifstream file(path);
 		std::string placeHolder;
-		while (std::getline(file, placeHolder)) { quotes.push_back(placeHolder); }
+		while (std::getline(file, placeHolder)) quotes.push_back(placeHolder);
 
-		addSettingToQuotes("stanleyCeleste", true);
-		addSettingToQuotes("futurama");
+		addSettingToQuotes("stanleyCeleste");
+		addSettingToQuotes("snl50");
+		addSettingToQuotes("futurama", false);
 
 		if (Mod::get()->getSettingValue<bool>("custom")) {
 			auto pathCustom = (Mod::get()->getConfigDir() / "custom.txt").string();
