@@ -43,6 +43,7 @@ each line is a new message for the loading screen)";
 		std::string placeHolder;
 		while (std::getline(file, placeHolder)) quotes.push_back(placeHolder);
 
+		addSettingToQuotes("default", false);
 		addSettingToQuotes("stanleyCeleste");
 		addSettingToQuotes("snl50");
 		addSettingToQuotes("futurama", false);

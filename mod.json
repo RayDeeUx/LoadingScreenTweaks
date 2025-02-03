@@ -61,6 +61,12 @@
 			"type": "bool",
 			"default": false
 		},
+		"default": {
+			"name": "Default Set of Splash Texts",
+			"description": "Includes the default set of Splash Texts from this mod.",
+			"type": "bool",
+			"default": true
+		},
 		"stanleyCeleste": {
 			"name": "The Stanley Parable + Celeste",
 			"description": "<cp>REQUIRES RESTART</c>\n\nIncludes quotes from Celeste and The Stanley Parable.",
