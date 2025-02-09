@@ -1,4 +1,11 @@
 # LoadingScreenTweaks Changelog
+## v1.6.0
+- Added a "refresh quotes" button for convenience. No more full game restarts!
+    - Toggling on/off quotes while the game is open will auto-reload quotes for the mod to choose from.
+- Allow toggling on/off the default set of quotes.
+- Added 50 quotes from SNL to celebrate SNL50.
+    - "Live from New York, it's Saturday Night!"
+- Fix some bugs here and there.
 ## v1.5.1
 - Fix a stupid C++ crash for shuffling empty data types.
 ## v1.5.0
