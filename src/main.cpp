@@ -12,7 +12,10 @@ std::vector<std::string> quotes;
 std::vector<std::string> customQuotes;
 
 void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
-	if (!Mod::get()->getSettingValue<bool>(settingName)) return;
+	bool settingEnabled = Mod::get()->getSettingValue<bool>(settingName);
+	bool logging = Mod::get()->getSettingValue<bool>("logging");
+	if (logging) log::info("{} enabled: {}", settingName, settingEnabled);
+	if (!settingEnabled) return;
 	auto settingAsFileName = fmt::format("{}.txt", settingName);
 	auto filePath = (Mod::get()->getResourcesDir() / settingAsFileName).string();
 	std::ifstream file(filePath);
@@ -21,6 +24,7 @@ void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
 		std::string forPushingIntoVector = placeholderString;
 		if (quotationMarks) forPushingIntoVector = fmt::format("\"{}\"", placeholderString);
 		quotes.push_back(forPushingIntoVector);
+		if (logging) log::info("added quote from {}: {}", settingName, forPushingIntoVector);
 	}
 }
 

@@ -114,6 +114,11 @@
 			"type": "bool",
 			"default": true,
 			"platforms": ["win", "macos"]
+		},
+		"logging": {
+			"name": "Logging",
+			"type": "bool",
+			"default": false
 		}
 	},
 	"resources": {
