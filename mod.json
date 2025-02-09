@@ -83,7 +83,7 @@
 			"name": "SNL50",
 			"description": "<cp>REQUIRES RESTART</c>\n\nIncludes quotes from Saturday Night Live (one from each season, hopefully).",
 			"type": "bool",
-			"default": true
+			"default": false
 		},
 		"customFont": {
 			"name": "Splash Text Font #",
