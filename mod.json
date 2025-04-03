@@ -1,11 +1,12 @@
 {
-	"geode": "4.0.1",
+	"geode": "4.3.1",
 	"gd": {
 		"mac": "2.2074",
 		"android": "2.2074",
-		"win": "2.2074"
+		"win": "2.2074",
+		"ios": "2.2074"
 	},
-	"version": "v1.6.1",
+	"version": "v1.6.2",
 	"id": "raydeeux.loadingscreentweaks",
 	"name": "LoadingScreenTweaks",
 	"developer": "RayDeeUx",
@@ -113,7 +114,10 @@
 			"description": "Custom splash texts can either become multiline splash texts (if this is enabled) or be limited to one line (if this is disabled). Here is where you make that decision.",
 			"type": "bool",
 			"default": true,
-			"platforms": ["win", "macos"]
+			"platforms": [
+				"win",
+				"macos"
+			]
 		},
 		"logging": {
 			"name": "Logging",
