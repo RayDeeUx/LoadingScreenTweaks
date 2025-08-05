@@ -76,7 +76,7 @@ std::string grabRandomQuote(std::vector<std::string> vector) {
 class $modify(MyLoadingLayer, LoadingLayer) {
 	void fakeUpdateFunction(float dt) {
 		log::info("Load Step: {}", m_loadStep);
-		log::info("{:.2f}% loaded", m_sliderBar->getContentWidth() / 210.f);
+		log::info("{:.2f}% loaded", m_sliderBar->getContentWidth() / 210.f * 100.f);
 	}
 	bool init(bool fromReload) {
 		if (!LoadingLayer::init(fromReload)) return false;
