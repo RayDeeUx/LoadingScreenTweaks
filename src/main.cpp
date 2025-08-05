@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <algorithm>
 #include <random>
 #include "Settings.hpp"
 
@@ -42,11 +41,6 @@ each line is a new message for the loading screen)";
 	}
 	
 	if (Mod::get()->getSettingValue<bool>("customSplashText") && !Mod::get()->getSettingValue<bool>("hideSplashText")) {
-		auto path = (Mod::get()->getResourcesDir() / "default.txt").string();
-		std::ifstream file(path);
-		std::string placeHolder;
-		while (std::getline(file, placeHolder)) quotes.push_back(placeHolder);
-
 		addSettingToQuotes("default", false);
 		addSettingToQuotes("stanleyCeleste");
 		addSettingToQuotes("snl50");
@@ -83,16 +77,21 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 	bool init(bool fromReload) {
 		if (!LoadingLayer::init(fromReload)) return false;
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
-		if (const auto node = getChildByID("text-area")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText")); // hide loading screen splash text
-		if (const auto node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar")); // hide progress bar
-		if (const auto node = getChildByID("cocos2d-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide cocos
-		if (const auto node = getChildByID("fmod-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod")); // hide fmod
+
+		if (CCNode* node = getChildByID("text-area")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText"));
+		if (CCNode* node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar"));
+		if (CCNode* node = getChildByID("cocos2d-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
+		if (CCNode* node = getChildByID("fmod-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
+
 		if (!Mod::get()->getSettingValue<bool>("customSplashText") || fromReload) return true;
-		auto textArea = typeinfo_cast<TextArea*>(getChildByID("text-area"));
+
+		CCNode* textArea = m_textArea ? m_textArea : getChildByID("text-area");
 		if (!textArea || !textArea->isVisible()) return true;
 		std::string theString = "";
 		if (!customQuotes.empty() && Mod::get()->getSettingValue<bool>("customTextsOnly")) theString = grabRandomQuote(customQuotes);
 		else theString = grabRandomQuote(quotes);
+		if (theString.empty()) return true;
+
 		textArea->setVisible(false);
 		std::string desiredFont = "goldFont.fnt";
 		int64_t fontID = Mod::get()->getSettingValue<int64_t>("customFont");
@@ -103,9 +102,9 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 		} else if (fontID != 0) {
 			desiredFont = fmt::format("gjFont{:02d}.fnt", fontID);
 		}
-		auto line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
-		line->setPosition({textArea->getPositionX(), textArea->getPositionY()});
-		if (fontID != 0 && Mod::get()->getSettingValue<bool>("customFontGoldColor")) { line->setColor({254, 207, 6}); }
+		CCLabelBMFont* line = CCLabelBMFont::create(theString.c_str(), desiredFont.c_str());
+		line->setPosition(textArea->getPosition());
+		if (fontID != 0 && Mod::get()->getSettingValue<bool>("customFontGoldColor")) line->setColor({254, 207, 6});
 		#ifdef GEODE_IS_DESKTOP
 		if (!Mod::get()->getSettingValue<bool>("multiline")) {
 			line->limitLabelWidth(420.f, textArea->getScale(), .25f);
