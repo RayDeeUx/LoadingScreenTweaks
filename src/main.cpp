@@ -30,7 +30,7 @@ void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
 $on_mod(Loaded) {
 	(void) Mod::get()->registerCustomSettingType("configdir", &MyButtonSettingV3::parse);
 	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
-	
+
 	auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
 	if (!std::filesystem::exists(path3)) {
 		std::string content = R"(System32
@@ -39,7 +39,7 @@ lorem ipsum
 each line is a new message for the loading screen)";
 		(void) utils::file::writeString(path3, content);
 	}
-	
+
 	if (Mod::get()->getSettingValue<bool>("customSplashText") && !Mod::get()->getSettingValue<bool>("hideSplashText")) {
 		addSettingToQuotes("default", false);
 		addSettingToQuotes("stanleyCeleste");
@@ -74,9 +74,14 @@ std::string grabRandomQuote(std::vector<std::string> vector) {
 }
 
 class $modify(MyLoadingLayer, LoadingLayer) {
+	void fakeUpdateFunction(float dt) {
+		log::info("Load Step: {}", m_loadStep);
+		log::info("{:.2f}% loaded", m_sliderBar->getContentWidth() / 210.f);
+	}
 	bool init(bool fromReload) {
 		if (!LoadingLayer::init(fromReload)) return false;
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
+		this->schedule(reinterpret_cast<SEL_SCHEDULE>(&MyLoadingLayer::fakeUpdateFunction));
 
 		if (CCNode* node = getChildByID("text-area")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText"));
 		if (CCNode* node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar"));
