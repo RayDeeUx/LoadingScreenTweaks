@@ -74,19 +74,51 @@ std::string grabRandomQuote(std::vector<std::string> vector) {
 }
 
 class $modify(MyLoadingLayer, LoadingLayer) {
+	struct Fields {
+		CCLabelBMFont* m_loadStepLabel = nullptr;
+		CCLabelBMFont* m_loadPercentLabel = nullptr;
+	};
 	void fakeUpdateFunction(float dt) {
-		log::info("Load Step: {}", m_loadStep);
-		log::info("{:.2f}% loaded", m_sliderBar->getContentWidth() / 210.f * 100.f);
+		const Fields* fields = m_fields.self();
+		if (fields->m_loadStepLabel) {
+			fields->m_loadStepLabel->setString(fmt::format("Load Step: {}/14", m_loadStep).c_str());
+		}
+		if (fields->m_loadPercentLabel) {
+			fields->m_loadPercentLabel->setString(fmt::format("Loaded: {:.2f}%", m_sliderBar->getContentWidth() / 210.f * 100.f).c_str());
+		}
 	}
 	bool init(bool fromReload) {
 		if (!LoadingLayer::init(fromReload)) return false;
 		if (!Mod::get()->getSettingValue<bool>("enabled")) return true;
-		this->schedule(reinterpret_cast<SEL_SCHEDULE>(&MyLoadingLayer::fakeUpdateFunction));
+		this->schedule(schedule_selector(MyLoadingLayer::fakeUpdateFunction));
 
 		if (CCNode* node = getChildByID("text-area")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideSplashText"));
 		if (CCNode* node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar"));
 		if (CCNode* node = getChildByID("cocos2d-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
 		if (CCNode* node = getChildByID("fmod-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
+
+		Fields* fields = m_fields.self();
+
+		if (Mod::get()->getSettingValue<bool>("loadStepText")) {
+			CCLabelBMFont* loadStepLabel = CCLabelBMFont::create("", "goldFont.fnt");
+			fields->m_loadStepLabel = loadStepLabel;
+			loadStepLabel->setAnchorPoint({0.f, 0.f});
+			loadStepLabel->setPosition({2.5f, 2.5f});
+			loadStepLabel->setScale(.25f);
+			this->addChild(loadStepLabel);
+		}
+
+		if (Mod::get()->getSettingValue<bool>("loadingProgressText")) {
+			CCLabelBMFont* loadingPercentLabel = CCLabelBMFont::create("", "goldFont.fnt");
+			fields->m_loadPercentLabel = loadingPercentLabel;
+			loadingPercentLabel->setAnchorPoint({0.f, 0.f});
+			loadingPercentLabel->setPosition({2.5f, 2.5f});
+			loadingPercentLabel->setScale(.25f);
+			this->addChild(loadingPercentLabel);
+			if (Mod::get()->getSettingValue<bool>("loadStepText") && fields->m_loadStepLabel) {
+				fields->m_loadStepLabel->setPositionY(fields->m_loadStepLabel->getPositionY() + 7.5f);
+			}
+		}
 
 		if (!Mod::get()->getSettingValue<bool>("customSplashText") || fromReload) return true;
 

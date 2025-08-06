@@ -119,6 +119,18 @@
 				"macos"
 			]
 		},
+		"loadingProgressText": {
+			"name": "Loading Progress Percentage Text",
+			"description": "Adds text to the LoadingLayer indicating the loading progress.\n\n<cy>(May not be accurate, use at your own risk.)</c>",
+			"type": "bool",
+			"default": false
+		},
+		"loadStepText": {
+			"name": "Load Step Progress Text",
+			"description": "Adds text to the LoadingLayer indicating the load step progress.\n\n<cy>(May not be accurate, use at your own risk.)</c>",
+			"type": "bool",
+			"default": false
+		},
 		"logging": {
 			"name": "Logging",
 			"type": "bool",
