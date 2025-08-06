@@ -1,4 +1,10 @@
 # LoadingScreenTweaks Changelog
+## v1.7.0
+- Added `Loading Progress Percentage Text` and `Load Step Progress Text`.
+  - `Load Step Progress Text` is definitely the more accurate of these two options.
+  - You can still use both options together if you'd like, but there are no promises that `Loading Progress Percentage Text` is accurate.
+- Fix a long-standing bug where the default set of splash texts could not be toggled off.
+  - Incidentally, also fix a bug where a quote from the default set of splash texts was twice as likely to appear.
 ## v1.6.2
 - Experimental iOS support.
 ## v1.6.1
