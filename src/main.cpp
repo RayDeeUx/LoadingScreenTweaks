@@ -1,7 +1,4 @@
 #include <Geode/modify/LoadingLayer.hpp>
-#include <iostream>
-#include <vector>
-#include <fstream>
 #include <random>
 #include "Settings.hpp"
 
@@ -99,21 +96,26 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 
 		Fields* fields = m_fields.self();
 
+		const float loadingProgressTextOffsetX = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetX")), 0.f, 99999.f);
+		const float loadingProgressTextOffsetY = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetY")), 0.f, 99999.f);
+
 		if (Mod::get()->getSettingValue<bool>("loadStepText")) {
-			CCLabelBMFont* loadStepLabel = CCLabelBMFont::create("", "goldFont.fnt");
+			CCLabelBMFont* loadStepLabel = CCLabelBMFont::create("Load Step: Unknown", "goldFont.fnt");
 			fields->m_loadStepLabel = loadStepLabel;
 			loadStepLabel->setAnchorPoint({0.f, 0.f});
-			loadStepLabel->setPosition({2.5f, 2.5f});
+			loadStepLabel->setPosition({2.5f + loadingProgressTextOffsetX, 2.5f + loadingProgressTextOffsetY});
 			loadStepLabel->setScale(.25f);
+			loadStepLabel->setID("load-step-label"_spr);
 			this->addChild(loadStepLabel);
 		}
 
 		if (Mod::get()->getSettingValue<bool>("loadingProgressText")) {
-			CCLabelBMFont* loadingPercentLabel = CCLabelBMFont::create("", "goldFont.fnt");
+			CCLabelBMFont* loadingPercentLabel = CCLabelBMFont::create("Loaded: Unknown", "goldFont.fnt");
 			fields->m_loadPercentLabel = loadingPercentLabel;
 			loadingPercentLabel->setAnchorPoint({0.f, 0.f});
-			loadingPercentLabel->setPosition({2.5f, 2.5f});
+			loadingPercentLabel->setPosition({2.5f + loadingProgressTextOffsetX, 2.5f + loadingProgressTextOffsetY});
 			loadingPercentLabel->setScale(.25f);
+			loadingPercentLabel->setID("loading-percent-label"_spr);
 			this->addChild(loadingPercentLabel);
 			if (Mod::get()->getSettingValue<bool>("loadStepText") && fields->m_loadStepLabel) {
 				fields->m_loadStepLabel->setPositionY(fields->m_loadStepLabel->getPositionY() + 7.5f);
@@ -131,7 +133,7 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 
 		textArea->setVisible(false);
 		std::string desiredFont = "goldFont.fnt";
-		int64_t fontID = Mod::get()->getSettingValue<int64_t>("customFont");
+		auto fontID = Mod::get()->getSettingValue<int64_t>("customFont");
 		if (fontID == -2) {
 			desiredFont = "chatFont.fnt";
 		} else if (fontID == -1) {

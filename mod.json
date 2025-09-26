@@ -1,5 +1,5 @@
 {
-	"geode": "4.4.0",
+	"geode": "4.7.0",
 	"gd": {
 		"mac": "2.2074",
 		"win": "2.2074",
@@ -27,8 +27,8 @@
 			"type": "custom:configdir"
 		},
 		"hideCocosAndFmod": {
-			"name": "Hide Cocos/FMod Watermarks",
-			"description": "Hides the Cocos Engine and FMod watermarks.",
+			"name": "Hide Cocos/FMOD Watermarks",
+			"description": "Hides the Cocos Engine and FMOD watermarks.",
 			"type": "bool",
 			"default": true
 		},
@@ -130,6 +130,32 @@
 			"description": "Adds text to the LoadingLayer indicating the load step progress.\n\n<cy>(May not be accurate, use at your own risk.)</c>",
 			"type": "bool",
 			"default": false
+		},
+		"loadingProgressTextOffsetX": {
+			"name": "Loading Progress Text Position Offset (X)",
+			"description": "X-position offset for this mod's loading progress text. Intended for Android users whose camera or corner may be blocking the loading progress text.",
+			"type": "float",
+			"default": 0.0,
+			"min": 0.0,
+			"max": 99999.0,
+			"control": {
+				"slider": false,
+				"arrow": false,
+				"input": true
+			}
+		},
+		"loadingProgressTextOffsetY": {
+			"name": "Loading Progress Text Position Offset (Y)",
+			"description": "Y-position offset for this mod's loading progress text. Intended for Android users whose camera or corner may be blocking the loading progress text.",
+			"type": "float",
+			"default": 0.0,
+			"min": 0.0,
+			"max": 99999.0,
+			"control": {
+				"slider": false,
+				"arrow": false,
+				"input": true
+			}
 		},
 		"logging": {
 			"name": "Logging",
