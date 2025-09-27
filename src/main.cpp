@@ -96,8 +96,8 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 
 		Fields* fields = m_fields.self();
 
-		const float loadingProgressTextOffsetX = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetX")), 0.f, 99999.f);
-		const float loadingProgressTextOffsetY = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetY")), 0.f, 99999.f);
+		const float loadingProgressTextOffsetX = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetX")), 0.f, 100.f);
+		const float loadingProgressTextOffsetY = std::clamp<float>(static_cast<float>(Mod::get()->getSettingValue<double>("loadingProgressTextOffsetY")), 0.f, 100.f);
 
 		if (Mod::get()->getSettingValue<bool>("loadStepText")) {
 			CCLabelBMFont* loadStepLabel = CCLabelBMFont::create("Load Step: Unknown", "goldFont.fnt");

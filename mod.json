@@ -137,10 +137,9 @@
 			"type": "float",
 			"default": 0.0,
 			"min": 0.0,
-			"max": 99999.0,
+			"max": 100.0,
 			"control": {
 				"slider": false,
-				"arrow": false,
 				"input": true
 			}
 		},
@@ -150,10 +149,9 @@
 			"type": "float",
 			"default": 0.0,
 			"min": 0.0,
-			"max": 99999.0,
+			"max": 100.0,
 			"control": {
 				"slider": false,
-				"arrow": false,
 				"input": true
 			}
 		},
