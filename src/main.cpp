@@ -93,6 +93,10 @@ class $modify(MyLoadingLayer, LoadingLayer) {
 		if (CCNode* node = getChildByID("progress-slider")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideProgressBar"));
 		if (CCNode* node = getChildByID("cocos2d-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
 		if (CCNode* node = getChildByID("fmod-logo")) node->setVisible(!Mod::get()->getSettingValue<bool>("hideCocosAndFmod"));
+		if (CCSprite* sprite = typeinfo_cast<CCSprite*>(getChildByID("bg-texture"))) {
+			sprite->setOpacity(Mod::get()->getSettingValue<int64_t>("backgroundOpacity"));
+			sprite->setColor(Mod::get()->getSettingValue<ccColor3B>("backgroundColor"));
+		}
 
 		Fields* fields = m_fields.self();
 

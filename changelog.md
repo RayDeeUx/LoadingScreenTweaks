@@ -1,6 +1,8 @@
 # LoadingScreenTweaks Changelog
 ## v1.8.0
 - Added iOS JIT-less support.
+- Added `Background Opacity` and `Background Color` options.
+  - Default values are exactly as they appear in vanilla GD.
 - Added `Loading Progress Text Position Offset` options.
   - These settings are designed for Android users whose devices cover loading progress text from this mod because of their screen corners (be it curved or camera).
 ## v1.7.0

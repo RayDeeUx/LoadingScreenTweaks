@@ -119,6 +119,20 @@
 				"macos"
 			]
 		},
+		"backgroundOpacity": {
+			"name": "Background Opacity",
+			"description": "Adjust the opacity of the background of the loading screen.",
+			"type": "int",
+			"default": 255,
+			"min": 0,
+			"max": 255
+		},
+		"backgroundColor": {
+			"name": "Background Color",
+			"description": "Adjust the color of the background of the loading screen.",
+			"type": "color",
+			"default": "#0066FF"
+		},
 		"loadingProgressText": {
 			"name": "Loading Progress Percentage Text",
 			"description": "Adds text to the LoadingLayer indicating the loading progress.\n\n<cy>(May not be accurate, use at your own risk.)</c>",

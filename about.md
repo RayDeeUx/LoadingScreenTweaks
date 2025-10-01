@@ -1,6 +1,14 @@
 # LoadingScreenTweaks
+Spices things up a bit to the loading screen.
 
-Hides various elements of your choice from Geometry Dash's loading screen. Also allows you to set your own custom splash text, as well as its font.
+## Features:
+* Hide the FMOD and Cocos watermarks
+* Change the background color
+* Hide the progress bar
+* Replaces loading screen messages with others from this mod, or those of your own choice.
+
+## Notes
+Quotes originated from a variety of sources, including various members of the Geode SDK Discord server, Futurama, and the writers throughout SNL's history.
 
 Made with help from dank_meme, Cvolton, and SpaghettDev.
 
