@@ -25,7 +25,7 @@ void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
 
 $on_mod(Loaded) {
 	(void) Mod::get()->registerCustomSettingType("configdir", &MyButtonSettingV3::parse);
-	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514 --erymanthus | raydeeux
+	// code adapted with permission from dialouge handler original author thesillydoggo: https://discord.com/channels/911701438269386882/911702535373475870/1212633554345918514
 
 	auto path3 = (Mod::get()->getConfigDir() / "custom.txt").string();
 	if (!std::filesystem::exists(path3)) {
