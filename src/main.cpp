@@ -1,5 +1,4 @@
 #include <Geode/modify/LoadingLayer.hpp>
-#include <random>
 #include "Settings.hpp"
 
 using namespace geode::prelude;
