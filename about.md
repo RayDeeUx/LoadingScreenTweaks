@@ -1,8 +1,9 @@
 # LoadingScreenTweaks
-Spices things up a bit to the loading screen.
+Spices things up a bit to GD's loading screen.
 
 ## Features:
 * Hide the FMOD and Cocos watermarks
+* Show (an estimate of) GD's loading progress
 * Change the background color
 * Hide the progress bar
 * Replaces loading screen messages with others from this mod, or those of your own choice.
