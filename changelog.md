@@ -1,4 +1,6 @@
 # LoadingScreenTweaks Changelog
+## v1.8.2
+- Update SNL quote bank.
 ## v1.8.1
 - Added titles to the settings.
   - Wow, this mod grew a LOT! (This is a lie.)
