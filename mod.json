@@ -15,7 +15,7 @@
 	"early-load": true,
 	"settings": {
 		"filler-header": {
-			"name": "EndScreenTweaks Master Switch + Shortcuts",
+			"name": "LoadingScreenTweaks Master Switch + Shortcuts",
 			"type": "title"
 		},
 		"enabled": {
