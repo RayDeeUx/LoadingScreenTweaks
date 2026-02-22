@@ -13,7 +13,7 @@ void addSettingToQuotes(std::string settingName, bool quotationMarks = true) {
 	if (logging) log::info("{} enabled: {}", settingName, settingEnabled);
 	if (!settingEnabled) return;
 	auto settingAsFileName = fmt::format("{}.txt", settingName);
-	auto filePath = (Mod::get()->getResourcesDir() / settingAsFileName).string();
+	auto filePath = geode::utils::string::pathToString(Mod::get()->getResourcesDir() / settingAsFileName);
 	std::ifstream file(filePath);
 	std::string placeholderString;
 	while (std::getline(file, placeholderString)) {
@@ -44,7 +44,7 @@ each line is a new message for the loading screen)";
 		addSettingToQuotes("futurama", false);
 
 		if (Mod::get()->getSettingValue<bool>("custom")) {
-			auto pathCustom = (Mod::get()->getConfigDir() / "custom.txt").string();
+			auto pathCustom = geode::utils::string::pathToString(Mod::get()->getConfigDir() / "custom.txt");
 			std::ifstream file(pathCustom);
 			std::string str;
 			while (std::getline(file, str)) {
